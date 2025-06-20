@@ -82,7 +82,7 @@ const observer = new IntersectionObserver(
     document.getElementById("imageOverlay").style.display = "none";
   }
   
-  // 画像オーバーレイを開くイベントを .yt-card に設定
+  /* 画像オーバーレイを開くイベントを .yt-card に設定
   document.querySelectorAll('.yt-card').forEach(card => {
     card.addEventListener('click', function (e) {
       const imageSrc = this.getAttribute('data-image');
@@ -91,4 +91,22 @@ const observer = new IntersectionObserver(
       openOverlay(imageSrc);
     });
   });
+  */
+
+  document.querySelectorAll('.yt-card').forEach(card => {
+  const link = card.getAttribute('data-link');
+  if (link) {
+    card.addEventListener('click', function () {
+      window.open(link, '_blank'); // 新しいタブで開く
+    });
+  } else {
+    // 通常のオーバーレイ動作
+    card.addEventListener('click', function () {
+      const imageSrc = this.getAttribute('data-image');
+      if (!imageSrc) return;
+      openOverlay(imageSrc);
+    });
+  }
+});
+
   
