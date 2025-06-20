@@ -1,18 +1,15 @@
 /* === Google Fonts === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-/* === Variables === */
 :root {
-  --bg-light: #fffaf5;
-  --bg-dark: #1e1e1e;
-  --main-color: #ff6f00;
-  --accent-color: #ffd180;
-  --text-light: #fff;
-  --text-dark: #333;
+  --base-color: #3FA3CB;
+  --main-color: #f1f1f1;
+  --accent-color: #0f1419;
+  --text-light: #f1f1f1;
+  --text-dark: #0f1419;
   --font: 'Inter', sans-serif;
 }
 
-/* === Reset === */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,12 +17,128 @@
 }
 
 body {
-  font-family: var(--font);
-  background: var(--bg-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
   color: var(--text-dark);
+  background: var(--bg-light);
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+
+.section {
+  padding: 4rem 2rem 4rem 2rem;
+}
+
+
+h2 {
+  font-family: 'KeiFont', sans-serif;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+header.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--base-color);
+  color: white;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-weight: 600;
+  position: relative;
+}
+
+.about-block h3 {
+  font-size: 1.2rem;
+  color: var(--base-color);
+  margin-bottom: 0.6rem;
+  border-left: 4px solid var(--base-color);
+  padding-left: 0.5rem;
+}
+
+.profile-list {
+  list-style: none;
+  position: relative;
+  background: var(--base-color); /* 吹き出しの色 */
+  padding: 15px 20px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 280px;
+  margin: 1rem auto; /* 中央寄せ */
+  color: var(--text-light);
+}
+
+
+/* 吹き出しの三角部分（下に伸びる） */
+.profile-list::after {
+  content: "";
+  position: absolute;
+  top: -20px; /* 写真下に設置するため上側に向けるなら bottom に変更 */
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-bottom-color: var(--base-color);
+}
+
+.section-dark {
+  background-color: var(--base-color);
+  color: var(--text-light);
+}
+
+.skill-category {
+  font-size: 1.3rem;                     /* より強調された見出しサイズを優先 */
+  color: var(--base-color);            /* カラーバリアブルを使って統一 */
+  margin-top: 3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid #555;         /* 下線は活かす */
+  padding-bottom: 0.5rem;
+}
+
+.skill-container h2 {
+  color: var(--text-dark);            /* カラーバリアブルを使って統一 */
+}
+
+.fill {
+  background: var(--base-color);
+  height: 100%;
+  width: var(--fill, 0%);
+  border-radius: 6px;
+  transition: width 1s ease;
+}
+
+.fill::after {
+  content: attr(style);
+  position: absolute;
+  right: 6px;
+  top: -24px;
+  font-size: 0.8rem;
+  color: #ffa726;
+  font-weight: 600;
+  content: attr(data-percent);
+}
+
 
 /* === Hero Section === */
 .hero {
@@ -92,7 +205,7 @@ body {
   top: 0;
   width: 100%;
   background: var(--main-color);
-  padding: 1rem 2rem;
+  padding: 0.5vw 1vw;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -109,18 +222,9 @@ body {
   margin-left: 0.5rem;
 }
 
-.main-nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
 
-.main-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-}
+
+
 
 .main-nav a::after {
   content: '';
@@ -141,19 +245,14 @@ body {
 }
 
 /* === Section Styling === */
-.section {
-  padding: 4rem 2rem 4rem 2rem;
-}
+
 
 .section-light {
   background: var(--bg-light);
   color: var(--text-dark);
 }
 
-.section-dark {
-  background-color: #ffcb78;
-  color: var(--text-light);
-}
+
 
 .container {
   max-width: 1200px;
@@ -281,100 +380,17 @@ a.clicked {
   opacity: 1;
   transform: translateY(0);
 }
-
-
-
-/* === Responsive === */
-@media screen and (max-width: 768px) {
-  .two-column {
-    grid-template-columns: 1fr;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .hero-title {
-    font-size: 2.2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-}
-
-
-.skill-category {
-  font-size: 1.3rem;                     /* より強調された見出しサイズを優先 */
-  color: var(--accent-color);            /* カラーバリアブルを使って統一 */
-  margin-top: 3rem;
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  border-bottom: 1px solid #555;         /* 下線は活かす */
-  padding-bottom: 0.5rem;
-}
-
-
-  
-  .fill::after {
-    content: attr(style);
-    position: absolute;
-    right: 6px;
-    top: -24px;
-    font-size: 0.8rem;
-    color: #ffa726;
-    font-weight: 600;
-    content: attr(data-percent);
-  }
   
   /* JSで data-percent 属性を埋め込む処理が必要 */
   
   /* === About Section Layout === */
-  .profile-list {
-    list-style: none;
-    position: relative;
-    background: #f0f0f0; /* 吹き出しの色 */
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 280px;
-    margin: 1rem auto; /* 中央寄せ */
-  }
-  
-  
-  /* 吹き出しの三角部分（下に伸びる） */
-  .profile-list::after {
-    content: "";
-    position: absolute;
-    top: -20px; /* 写真下に設置するため上側に向けるなら bottom に変更 */
-    left: 50%;
-    transform: translateX(-50%);
-    border: 10px solid transparent;
-    border-bottom-color: #f0f0f0;
-  }
+
   
   .about-block {
     margin-bottom: 1rem;
   }
   
-  .about-block h3 {
-    font-size: 1.2rem;
-    color: var(--main-color);
-    margin-bottom: 0.6rem;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 0.5rem;
-  }
+
   
   .about-block p {
     font-size: 1rem;
@@ -421,11 +437,6 @@ a.clicked {
   }
   
 
-  h2 {
-    font-family: 'KeiFont', sans-serif;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
 
   .skill-3col {
     display: flex;
@@ -448,13 +459,6 @@ a.clicked {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-  }
-    
-  @media screen and (max-width: 768px) {
-    #about {
-      background-size: contain;
-      background-position: top center;
-    }
   }
   
 
@@ -629,13 +633,7 @@ a.clicked {
   position: relative;
 }
 
-.fill {
-  background: linear-gradient(to right, var(--main-color), #ffa726);
-  height: 100%;
-  width: var(--fill, 0%);
-  border-radius: 6px;
-  transition: width 1s ease;
-}
+
 
 .skill-note {
   font-size: 0.85rem;
@@ -714,7 +712,7 @@ a.clicked {
   padding: 0.8rem;
   font-size: 1rem;
   background-color: var(--accent-color, orange);
-  color: #000;
+  color:  var(--text-light);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -762,4 +760,93 @@ a.clicked {
 
 .close-btn:hover {
   color: #ccc;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 768px) {
+    header.main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--base-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.0rem;
+}
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 0.5rem;
+    padding:  0;
+}
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .main-nav li {
+    height: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .section {
+    padding: 1rem;
+}
+#about {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-image: url(images/about_background.gif);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.skill-category {
+    font-size: 1.3rem;
+    color: var(--base-color);
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid #555;
+    padding-bottom: 0.5rem;
+}
+.skill-3col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+.projects-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 1.0);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #000;
+}
 }
