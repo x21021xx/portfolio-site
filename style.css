@@ -857,3 +857,36 @@ a.clicked {
     color: #000;
 }
 }
+
+/* === Publications accordion (details/summary) === */
+.pub-details {
+  margin-top: 0.6rem;
+}
+
+.pub-summary {
+  list-style: none;         /* デフォルトの三角を消す（見た目調整） */
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--base-color);
+  border-left: 4px solid var(--base-color);
+  padding-left: 0.5rem;
+  margin-bottom: 0.6rem;
+  user-select: none;
+}
+
+/* Chrome/Safariのデフォルトマーカーを消す */
+.pub-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 代わりに自前のアイコンを付ける */
+.pub-summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* 開いている時は下向きに */
+.pub-details[open] .pub-summary::before {
+  content: "▾ ";
+}
