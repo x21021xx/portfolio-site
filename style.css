@@ -452,14 +452,21 @@ a.clicked {
   #about {
     position: relative;
     display: flex;
-    justify-content: center;  /* 横方向中央 */
-    align-items: center;      /* 縦方向中央 */
-    height: 90vh;        /* 高さを画面全体にする */
-    background-image: url("images/about_background.gif"); /* 背景画像のパス */
+    justify-content: center;
+    align-items: center;
+  
+    /* height固定はやめる（増えたらはみ出る原因） */
+    min-height: 90vh;  /* 画面の見栄えは維持 */
+    height: auto;      /* 中身に合わせて伸びる */
+  
+    background-image: url("images/about_background.gif");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+  
+    padding: 2rem 0;   /* 中身が増えた時も余白を確保 */
   }
+
   
 
   .about-container {
