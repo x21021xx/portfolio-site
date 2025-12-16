@@ -872,6 +872,7 @@ a.clicked {
   padding-left: 0.5rem;
   margin-bottom: 0.6rem;
   user-select: none;
+  font-family: 'KeiFont', sans-serif;  /* ← これが足りなかった */
 }
 
 /* Chrome/Safariのデフォルトマーカーを消す */
@@ -889,7 +890,4 @@ a.clicked {
 /* 開いている時は下向きに */
 .pub-details[open] .pub-summary::before {
   content: "▾ ";
-}
-.pub-summary {
-  font-family: 'KeiFont', sans-serif;  /* ← これが足りなかった */
 }
