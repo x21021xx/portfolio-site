@@ -890,3 +890,6 @@ a.clicked {
 .pub-details[open] .pub-summary::before {
   content: "▾ ";
 }
+.pub-summary {
+  font-family: 'KeiFont', sans-serif;  /* ← これが足りなかった */
+}
